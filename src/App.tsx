@@ -1,16 +1,15 @@
 import './App.css'
+// ÖNEMLİ: Görsel dosyanızın adı src/assets/profil.jpg olmalıdır.
+import profilResmi from './assets/WhatsApp Image 2026-01-02 at 22.52.40.jpeg'
 
 function App() {
   return (
     <>
-      {/* Erişilebilirlik için navigasyonu atlama bağlantısı [cite: 994, 1011] */}
-      <a href="#main-content" className="skip-link">
-        Ana içeriğe atla
-      </a>
+      <a href="#main-content" className="skip-link">Ana içeriğe atla</a>
 
-      {/* Sayfa Başlık Alanı [cite: 741, 742] */}
       <header>
-        <nav aria-label="Ana navigasyon"> {/* [cite: 981, 982] */}
+        <div className="site-title">Salih Atiç</div>
+        <nav aria-label="Ana navigasyon">
           <ul>
             <li><a href="#hakkimda">Hakkımda</a></li>
             <li><a href="#projeler">Projeler</a></li>
@@ -19,50 +18,82 @@ function App() {
         </nav>
       </header>
 
-      {/* Birincil İçerik Alanı - Sayfada sadece bir kez kullanılır [cite: 747, 748, 818] */}
       <main id="main-content">
-
-        {/* Hakkımda Bölümü [cite: 750, 752, 1191] */}
         <section id="hakkimda">
-          <h1>Salih Atiç - Kişisel Portfolyo</h1> {/* Ana başlık hiyerarşisi [cite: 857, 868] */}
-          <figure> {/* [cite: 761, 920] */}
-            <img
-              src="profilResmi"
-              alt="Salih Atiç'in vesikalık fotoğrafı" // Anlamlı alt metin [cite: 906, 918]
-            />
-            <figcaption>Salih Atiç - Öğrenci No: 230541026</figcaption>
-          </figure>
-          <p>Web Tasarımı ve Programlama dersi kapsamında geliştirilen erişilebilir portfolyo sayfasıdır.</p>
+          <div className="about-content">
+            <figure>
+              <img src={profilResmi} alt="Salih Atiç'in vesikalık fotoğrafı" />
+              <figcaption>Salih Atiç - Öğrenci No: 230541026</figcaption>
+            </figure>
+            <div className="about-text">
+              <h1>Kişisel Portfolyo</h1>
+              <p>Web Tasarımı ve Programlama dersi kapsamında geliştirilen modern, erişilebilir ve responsive (Flex/Grid) portfolyo sayfasıdır.</p>
+
+              <ul className="skill-tags" role="list" aria-label="Beceri etiketleri">
+                <li>HTML5</li>
+                <li>CSS3 (Flex/Grid)</li>
+                <li>JavaScript</li>
+                <li>React</li>
+                <li>TypeScript</li>
+                <li>Git</li>
+              </ul>
+            </div>
+          </div>
         </section>
 
-        {/* Projeler Bölümü [cite: 1196] */}
         <section id="projeler">
-          <h2>Projelerim</h2> {/* Bölüm başlığı [cite: 751, 858] */}
-          <article> {/* Bağımsız içerik bloğu [cite: 753, 754] */}
-            <h3>Web Projesi 1</h3>
-            <p>Vite ve React kullanılarak oluşturulmuş ilk laboratuvar çalışması.</p>
-          </article>
+          <h2>Projelerim</h2>
+          <div className="project-grid">
+            <article className="project-card">
+              <img src="https://via.placeholder.com/400x200?text=Proje+1" alt="E-Ticaret sitesi anasayfa ekran görüntüsü" />
+              <h3>E-Ticaret Sitesi</h3>
+              <p>React ve Node.js ile geliştirilmiş tam kapsamlı bir e-ticaret uygulaması.</p>
+              <ul className="skill-tags">
+                <li>React</li>
+                <li>Node.js</li>
+                <li>MongoDB</li>
+              </ul>
+            </article>
+
+            <article className="project-card">
+              <img src="https://via.placeholder.com/400x200?text=Proje+2" alt="Blog uygulaması yazı listesi görünümü" />
+              <h3>Blog Uygulaması</h3>
+              <p>Kişisel blog platformu. Markdown destekli yazı editörü barındırır.</p>
+              <ul className="skill-tags">
+                <li>TypeScript</li>
+                <li>Next.js</li>
+              </ul>
+            </article>
+
+            <article className="project-card">
+              <img src="https://via.placeholder.com/400x200?text=Proje+3" alt="Hava durumu uygulaması arayüzü" />
+              <h3>Hava Durumu</h3>
+              <p>OpenWeather API kullanılarak geliştirilmiş anlık hava durumu bilgisi sunan platform.</p>
+              <ul className="skill-tags">
+                <li>JavaScript</li>
+                <li>API</li>
+              </ul>
+            </article>
+          </div>
         </section>
 
-        {/* İletişim Formu Bölümü [cite: 799, 1088, 1179] */}
         <section id="iletisim">
           <h2>İletişim</h2>
-          {/* novalidate: Özel hata mesajları için tarayıcı balonlarını kapatır [cite: 1167, 1168] */}
           <form action="#" method="POST" noValidate>
-            <fieldset> {/* İlişkili alanları gruplar [cite: 1043, 1092] */}
+            <fieldset>
               <legend>İletişim Formu</legend>
 
               <div className="form-group">
-                <label htmlFor="name">Ad Soyad: </label> {/* label-id ilişkisi  */}
+                <label htmlFor="name">Ad Soyad: </label>
                 <input
                   type="text"
                   id="name"
                   name="name"
                   required
-                  minLength={2} // [cite: 1080, 1097]
-                  aria-describedby="name-error" // [cite: 957, 1099]
+                  minLength={2}
+                  aria-describedby="name-error"
                 />
-                <small id="name-error" className="error-msg" role="alert"></small> {/* [cite: 1098, 1170] */}
+                <small id="name-error" className="error-msg" role="alert"></small>
               </div>
 
               <div className="form-group">
@@ -75,6 +106,17 @@ function App() {
                   aria-describedby="email-error"
                 />
                 <small id="email-error" className="error-msg" role="alert"></small>
+              </div>
+
+              <div className="form-group">
+                <label htmlFor="subject">Konu: </label>
+                <select id="subject" name="subject" required aria-describedby="subject-error">
+                  <option value="">-- Seçiniz --</option>
+                  <option value="is">İş Teklifi</option>
+                  <option value="soru">Soru</option>
+                  <option value="oneri">Öneri</option>
+                </select>
+                <small id="subject-error" className="error-msg" role="alert"></small>
               </div>
 
               <div className="form-group">
@@ -96,7 +138,6 @@ function App() {
         </section>
       </main>
 
-      {/* Alt Bilgi Alanı [cite: 759, 760] */}
       <footer>
         <p>&copy; 2026 Salih Atiç. Tüm hakları saklıdır.</p>
       </footer>
